@@ -8,17 +8,16 @@ export default class Character {
   }
 
   set isAttack(distance) {
-    this.distance = distance;
-    const distanceFactor = (100 - ((this.distance - 1) * 10)) / 100;
+    const distFactor = (100 - ((distance - 1) * 10)) / 100;
 
     if (this.stoned === true) {
-      this.newAttack = Math.floor((this.attack * distanceFactor) - Math.log2(this.distance) * 5);
+      this.distanceAttack = Math.floor((this.attack * distFactor) - Math.log2(distance) * 5);
     } else {
-      this.newAttack = this.attack * distanceFactor;
+      this.distanceAttack = this.attack * distFactor;
     }
   }
 
   get isAttack() {
-    return this.newAttack;
+    return this.distanceAttack;
   }
 }
